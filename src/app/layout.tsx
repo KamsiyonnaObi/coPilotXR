@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -54,16 +55,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "font-Adelle antialiased",
-          adelle.variable,
-          neuzeit.variable
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        variables: { colorPrimary: "#ec443c" },
+      }}
+    >
+      <html lang="en">
+        <body
+          className={cn(
+            "font-Adelle antialiased",
+            adelle.variable,
+            neuzeit.variable
+          )}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
