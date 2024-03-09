@@ -1,6 +1,7 @@
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <section></section>
       <div>
         <h1 className="font-Adelle font-bold">This should be adelle bold</h1>
         <p className="font-Adelle font-semibold">
