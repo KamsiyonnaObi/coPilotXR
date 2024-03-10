@@ -1,21 +1,27 @@
-export default function Home() {
+import {
+  SignedOut,
+  SignedIn,
+  UserButton,
+  SignInButton,
+  currentUser,
+} from "@clerk/nextjs";
+
+export default async function Home() {
+  const user = await currentUser();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <h1 className="font-Adelle font-bold">This should be adelle bold</h1>
-        <p className="font-Adelle font-semibold">
-          This should be adelle semi bold
-        </p>
-        <p>This should be adelle regular</p>
-      </div>
-      <div>
-        <h1 className="font-Neuzeit font-extrabold">
-          This should be Neuzeit black
-        </h1>
-        <p className="font-Neuzeit font-bold">This should be Neuzeit bold</p>
-        <p className="font-Neuzeit">This should be Neuzeit regular</p>
-        <p className="font-Neuzeit font-light">This should be Neuzeit light</p>
-      </div>
+    <main className="flex flex-col  p-12">
+      <SignedIn>
+        <UserButton afterSignOutUrl="/" />
+        <div>
+          <h1 className="font-Adelle">
+            Welcome <span className="font-bold">{user?.firstName}</span>
+          </h1>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        Please sign in <SignInButton />
+      </SignedOut>
     </main>
   );
 }

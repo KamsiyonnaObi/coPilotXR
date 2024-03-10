@@ -1,7 +1,11 @@
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
 import { cn } from "../../shadcn/lib/utils";
+
+import localFont from "next/font/local";
+
+import "./globals.css";
 
 const adelle = localFont({
   src: [
@@ -54,16 +58,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "font-Adelle antialiased",
-          adelle.variable,
-          neuzeit.variable
-        )}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        variables: { colorPrimary: "#ec443c" },
+      }}
+    >
+      <html lang="en">
+        <body
+          className={cn(
+            "font-Adelle antialiased",
+            adelle.variable,
+            neuzeit.variable
+          )}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
