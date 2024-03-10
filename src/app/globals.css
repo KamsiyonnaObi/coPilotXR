@@ -92,9 +92,21 @@
     @apply flex justify-center items-center;
   }
 
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
   /* ===== TYPOGRAPHY */
   .p-16-semibold {
     @apply font-semibold text-[16px] leading-[140%];
+  }
+  /* Navbar Component */
+  .header {
+    @apply flex-between fixed h-16 w-full border-b-4 border-purple-100 bg-dark-700 p-5 lg:hidden;
+  }
+
+  .header-nav_elements {
+    @apply mt-8 flex w-full flex-col items-start gap-5;
   }
 
   /* Sidebar Component */
