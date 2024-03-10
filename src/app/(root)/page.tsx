@@ -1,13 +1,27 @@
-import { UserButton } from "@clerk/nextjs";
+import {
+  SignedOut,
+  SignedIn,
+  UserButton,
+  SignInButton,
+  currentUser,
+} from "@clerk/nextjs";
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div>
-        <h1 className="font-Adelle font-bold">This should be adelle bold</h1>
-        <p>Home</p>
-      </div>
-      <UserButton afterSignOutUrl="/" />
+    <main className="flex flex-col  p-12">
+      <SignedIn>
+        <UserButton afterSignOutUrl="/" />
+        <div>
+          <h1 className="font-Adelle">
+            Welcome <span className="font-bold">{user?.firstName}</span>
+          </h1>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        Please sign in <SignInButton />
+      </SignedOut>
     </main>
   );
 }
