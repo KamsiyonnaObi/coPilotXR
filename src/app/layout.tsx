@@ -67,7 +67,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={cn(
-            "font-Adelle antialiased",
+            "font-Neuzeit antialiased",
             adelle.variable,
             neuzeit.variable
           )}
