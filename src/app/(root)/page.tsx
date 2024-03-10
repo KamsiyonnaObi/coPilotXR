@@ -19,9 +19,6 @@ export default async function Home() {
           </h1>
         </div>
       </SignedIn>
-      <SignedOut>
-        Please sign in <SignInButton />
-      </SignedOut>
     </main>
   );
 }

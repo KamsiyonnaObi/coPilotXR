@@ -1,33 +1,33 @@
-export const adelleFonts = [
+export const navLinks = [
   {
-    path: "../../public/fonts/Adelle/Adelle-Bold.otf",
-    weight: "700",
+    label: "Home",
+    route: "/",
+    icon: "/assets/icons/home.svg",
   },
-  {
-    path: "../../public/fonts/Adelle/Adelle-Semibold.otf",
-    weight: "600",
-  },
-  {
-    path: "../../public/fonts/Adelle/Adelle-regular.otf",
-    weight: "400",
-  },
-];
 
-export const neuzeitFonts = [
   {
-    path: "../../public/fonts/Neuzeit/Neuzeit-Black.otf",
-    weight: "800",
+    label: "Object Remove",
+    route: "/transformations/add/remove",
+    icon: "/assets/icons/scan.svg",
   },
   {
-    path: "../../public/fonts/Neuzeit/Neuzeit-Bold.otf",
-    weight: "700",
+    label: "Object Recolor",
+    route: "/transformations/add/recolor",
+    icon: "/assets/icons/filter.svg",
   },
   {
-    path: "../../public/fonts/Neuzeit/Neuzeit-Regular.otf",
-    weight: "400",
+    label: "Background Remove",
+    route: "/transformations/add/removeBackground",
+    icon: "/assets/icons/camera.svg",
   },
   {
-    path: "../../public/fonts/Neuzeit/Neuzeit-Light.otf",
-    weight: "300",
+    label: "Profile",
+    route: "/profile",
+    icon: "/assets/icons/profile.svg",
+  },
+  {
+    label: "Buy Credits",
+    route: "/credits",
+    icon: "/assets/icons/bag.svg",
   },
 ];
