@@ -10,15 +10,15 @@ import "./globals.css";
 const adelle = localFont({
   src: [
     {
-      path: "@/public/fonts/Adelle/Adelle-Bold.otf",
+      path: "../../public/fonts/Adelle/Adelle-Bold.otf",
       weight: "700",
     },
     {
-      path: "@/public/fonts/Adelle/Adelle-Semibold.otf",
+      path: "../../public/fonts/Adelle/Adelle-Semibold.otf",
       weight: "600",
     },
     {
-      path: "@/public/fonts/Adelle/Adelle-regular.otf",
+      path: "../../public/fonts/Adelle/Adelle-regular.otf",
       weight: "400",
     },
   ],
