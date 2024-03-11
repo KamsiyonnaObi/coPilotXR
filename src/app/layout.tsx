@@ -10,15 +10,15 @@ import "./globals.css";
 const adelle = localFont({
   src: [
     {
-      path: "../../public/fonts/Adelle/Adelle-Bold.otf",
+      path: "./fonts/adelle/Adelle-Bold.otf",
       weight: "700",
     },
     {
-      path: "../../public/fonts/Adelle/Adelle-Semibold.otf",
+      path: "./fonts/adelle/Adelle-Semibold.otf",
       weight: "600",
     },
     {
-      path: "../../public/fonts/Adelle/Adelle-regular.otf",
+      path: "./fonts/adelle/Adelle-regular.otf",
       weight: "400",
     },
   ],
@@ -28,19 +28,19 @@ const adelle = localFont({
 const neuzeit = localFont({
   src: [
     {
-      path: "../../public/fonts/Neuzeit/Neuzeit-Black.otf",
+      path: "./fonts/neuzeit/Neuzeit-Black.otf",
       weight: "800",
     },
     {
-      path: "../../public/fonts/Neuzeit/Neuzeit-Bold.otf",
+      path: "./fonts/neuzeit/Neuzeit-Bold.otf",
       weight: "700",
     },
     {
-      path: "../../public/fonts/Neuzeit/Neuzeit-Regular.otf",
+      path: "./fonts/neuzeit/Neuzeit-Regular.otf",
       weight: "400",
     },
     {
-      path: "../../public/fonts/Neuzeit/Neuzeit-Light.otf",
+      path: "./fonts/neuzeit/Neuzeit-Light.otf",
       weight: "300",
     },
   ],
