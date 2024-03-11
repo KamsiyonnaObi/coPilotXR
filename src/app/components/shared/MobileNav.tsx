@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import { navLinks } from "@/app/constants";
+import { navLinks } from "@/src/app/constants";
 import { Button } from "shadcn/components/ui/button";
 
 const MobileNav = () => {

@@ -2,10 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { navLinks } from "@/app/constants";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Button } from "shadcn/components/ui/button";
 import { usePathname } from "next/navigation";
+
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { navLinks } from "@/src/app/constants";
+
+import { Button } from "@/shadcn/components/ui/button";
 
 const Sidebar = () => {
   const pathname = usePathname();
