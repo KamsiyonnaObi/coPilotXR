@@ -88,7 +88,68 @@
 }
 
 @layer utilities {
+  .wrapper {
+    @apply max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-700 p-16-regular;
+  }
+
   .flex-center {
     @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  /* ===== TYPOGRAPHY */
+  .p-16-semibold {
+    @apply font-semibold text-[16px] leading-[140%];
+  }
+  .p-16-regular {
+    @apply font-normal text-[16px] leading-[140%];
+  }
+  /* Navbar Component */
+  .header {
+    @apply flex-between fixed h-16 w-full border-b-4 border-purple-100 bg-dark-700 p-5 lg:hidden;
+  }
+
+  .header-sidebar {
+    @apply fixed top-0 z-50 right-0 h-full w-3/5 bg-dark-700 transition-transform duration-300 transform;
+  }
+
+  .header-nav_elements {
+    @apply mt-8 flex w-full flex-col items-start gap-5;
+  }
+
+  /* Sidebar Component */
+  .sidebar {
+    @apply hidden h-screen w-72 bg-dark-700 p-5 shadow-md shadow-purple-200/50 lg:flex;
+  }
+
+  .sidebar-logo {
+    @apply flex items-center gap-2 md:py-2;
+  }
+
+  .sidebar-nav {
+    @apply h-full flex-col justify-between md:flex md:gap-4;
+  }
+
+  .sidebar-nav_elements {
+    @apply hidden w-full flex-col items-start gap-2 md:flex;
+  }
+
+  .sidebar-nav_element {
+    @apply flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover text-white transition-all hover:bg-red-300 hover:shadow-inner;
+  }
+
+  .sidebar-link {
+    @apply p-16-semibold flex items-center size-full gap-4 p-4;
+  }
+
+  /* =====  SHADCN OVERRIDES */
+  .button {
+    @apply py-4 px-6 flex-center gap-3 text-white rounded-full p-16-semibold focus-visible:ring-offset-0 focus-visible:ring-transparent !important;
+  }
+  .sheet-content button {
+    @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none !important;
   }
 }
