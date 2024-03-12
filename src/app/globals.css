@@ -145,6 +145,12 @@
     @apply p-16-semibold flex items-center size-full gap-4 p-4;
   }
 
+  /* Media Uploader Component */
+
+  .media-uploader-field {
+    @apply grid h-fit min-h-[200px] grid-cols-1 gap-5 py-4 md:grid-cols-2;
+  }
+
   /* =====  SHADCN OVERRIDES */
   .button {
     @apply py-4 px-6 flex-center gap-3 text-white rounded-full p-16-semibold focus-visible:ring-offset-0 focus-visible:ring-transparent !important;
