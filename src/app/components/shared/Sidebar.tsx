@@ -8,6 +8,7 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { navLinks } from "@/src/app/constants";
 
 import { Button } from "@/shadcn/components/ui/button";
+import Notification from "./Notification";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -27,6 +28,7 @@ const Sidebar = () => {
             <ul className="sidebar-nav_elements">
               {navLinks.slice(0, 4).map((link) => {
                 const isActive = link.route === pathname;
+
                 return (
                   <li
                     key={link.route}
@@ -52,6 +54,7 @@ const Sidebar = () => {
             <ul className="sidebar-nav_elements">
               {navLinks.slice(4).map((link) => {
                 const isActive = link.route === pathname;
+                const readAWS = link.route === "/aws-docs";
                 return (
                   <li
                     key={link.route}
@@ -68,6 +71,7 @@ const Sidebar = () => {
                         className={`${isActive && "brightness-200"}`}
                       />
                       <p className="my-auto">{link.label}</p>
+                      {readAWS && <Notification />}
                     </Link>
                   </li>
                 );

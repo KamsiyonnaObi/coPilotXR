@@ -26,8 +26,8 @@ export const navLinks = [
     icon: "/assets/icons/profile.svg",
   },
   {
-    label: "Buy Credits",
-    route: "/credits",
-    icon: "/assets/icons/bag.svg",
+    label: "AWS Implementation",
+    route: "/aws-docs",
+    icon: "/assets/icons/aws.svg",
   },
 ];
