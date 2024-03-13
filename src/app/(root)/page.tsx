@@ -1,18 +1,16 @@
-import { SignedIn, UserButton, currentUser } from "@clerk/nextjs";
+import Collection from "../components/shared/Collection";
 
 export default async function Home() {
-  const user = await currentUser();
-
+  const images = { data: ["1", "2", "3", "4"] }; // TODO change to back end call
   return (
-    <main className="flex flex-col  p-12">
-      <SignedIn>
-        <UserButton afterSignOutUrl="/" />
-        <div>
-          <h1 className="font-Adelle">
-            Welcome <span className="font-bold">{user?.firstName}</span>
-          </h1>
-        </div>
-      </SignedIn>
-    </main>
+    <>
+      <section className="home">
+        <h1 className="home-heading">Welcome To CoPilot Image Uploader</h1>
+      </section>
+      {/* Gallery */}
+      <section className="sm:mt-12">
+        <Collection images={images?.data} />
+      </section>
+    </>
   );
 }
