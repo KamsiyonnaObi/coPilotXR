@@ -15,7 +15,7 @@ export const formSchema = z.object({
 
 export type FormSchema = z.infer<typeof formSchema>;
 
-const UploadForm = () => {
+const UploadForm = ({userId}: {userId: string}) => {
   
   const {
     register,
