@@ -5,8 +5,7 @@ import { CldImage, CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 
 type MediaUploaderProps = {
-  setParentFormData: (formKey: string, url: string) => void;
-  
+  setParentFormData: (formKey: string, url: string) => void;  
   imageUrl?: any;
 };
 
@@ -17,7 +16,7 @@ const MediaUploader = ({
   const { toast } = useToast();
 
   const onUploadSuccessHandler = (result: any) => {
-    
+    console.log(result?.info?.secure_url)
     setParentFormData("image", result?.info?.secure_url);
 
     toast({

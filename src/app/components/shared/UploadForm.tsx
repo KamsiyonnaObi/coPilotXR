@@ -19,6 +19,7 @@ const UploadForm = () => {
   
   const {
     register,
+    watch,
     handleSubmit,
     getValues,
     setValue,
@@ -28,7 +29,7 @@ const UploadForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const imageUrl = getValues("image")
+  const imageUrl = watch("image")
 
   const onSubmit = () => {
     
