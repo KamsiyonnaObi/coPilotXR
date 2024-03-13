@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import MediaUploader from "./MediaUploader";
 
 export const formSchema = z.object({
-  title: z.string().optional(),
+  title: z.string(),
   desc: z.string().max(25).optional(),
   image: z.string().optional(),
 });
