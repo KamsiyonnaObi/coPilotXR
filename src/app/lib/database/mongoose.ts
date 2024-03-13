@@ -11,7 +11,7 @@ let cached: MongooseConnection = (global as any).mongoose;
 
 // if no cache set global mongoose to any
 if (!cached) {
-  (global as any).mogoose = { conn: null, promise: null };
+  cached = (global as any).mogoose = { conn: null, promise: null };
 }
 
 // export async connection function
