@@ -18,8 +18,6 @@ const ProfilePage = async () => {
 
   const user = await getUserById(userId);
 
-  // console.log(user);
-
   return (
     <>
       <section className="flex-between">
