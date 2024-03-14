@@ -1,5 +1,6 @@
 import React from "react";
 import Divider from "../Divider";
+import Subscription from "./Subscription";
 
 interface BillingSectionProps {
   creditBalance: number;
@@ -21,7 +22,7 @@ const BillingSection = ({ creditBalance, planId }: BillingSectionProps) => {
         <Divider />
         <div className="space-y-4">
           <p className="p-14-bold">Subscriptions</p>
-          <p className="p-14-regular">{planId}</p>
+          <Subscription planId={planId} />
         </div>
         <Divider />
       </section>
