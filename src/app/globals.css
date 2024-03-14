@@ -112,13 +112,24 @@
   .p-20-semibold {
     @apply font-semibold text-[20px] leading-[140%];
   }
+  /* 18 */
+  .p-18-bold {
+    @apply font-bold text-[18px] leading-[140%];
+  }
+
   .p-16-semibold {
     @apply font-semibold text-[16px] leading-[140%];
   }
   .p-16-regular {
     @apply font-normal text-[16px] leading-[140%];
   }
-
+  /* 14 */
+  .p-14-bold {
+    @apply font-bold text-[14px] leading-[120%];
+  }
+  .p-14-regular {
+    @apply font-normal text-[14px] leading-[120%];
+  }
   /* Home Page */
   .home {
     @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-inner;
