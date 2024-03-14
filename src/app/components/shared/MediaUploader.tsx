@@ -6,7 +6,7 @@ import Image from "next/image";
 
 type MediaUploaderProps = {
   setParentFormData: (formKey: string, url: string) => void;  
-  imageUrl?: any;
+  imageUrl: string;
 };
 
 const MediaUploader = ({
@@ -16,15 +16,10 @@ const MediaUploader = ({
   const { toast } = useToast();
 
   const onUploadSuccessHandler = (result: any) => {
-    console.log(result?.info?.secure_url)
-    setParentFormData("image", result?.info?.secure_url);
+    
+    setParentFormData("secureURL", result?.info?.secure_url);
 
-    toast({
-      title: "Image uploaded successfully",
 
-      duration: 5000,
-      className: "success-toast",
-    });
   };
   const onUploadErrorHandler = () => {
     toast({

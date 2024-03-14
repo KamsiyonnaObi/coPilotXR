@@ -1,39 +1,53 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import MediaUploader from "./MediaUploader";
+import { addImage } from "../../lib/actions/images.action";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/shadcn/components/ui/use-toast";
 
 export const formSchema = z.object({
-  title: z.string(),
+  title: z.string().min(3),
   desc: z.string().max(25).optional(),
-  image: z.string().optional(),
+  secureURL: z.string().url("please upload an image"),
 });
 
 export type FormSchema = z.infer<typeof formSchema>;
 
 const UploadForm = ({userId}: {userId: string}) => {
-  
+  const router = useRouter()
+  const {toast } = useToast()
   const {
     register,
     watch,
     handleSubmit,
-    getValues,
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { title: "", desc: "", image: "" },
+    defaultValues: { title: "", desc: "", secureURL: "" },
     resolver: zodResolver(formSchema),
   });
 
-  const imageUrl = watch("image")
+  const imageUrl = watch("secureURL")
+  
 
-  const onSubmit = () => {
-    
-    console.log(getValues("image"))
+  const onSubmit = async (data: {title: string, desc:string, secureURL:string}) => {
+    const request: AddImageParams = {image: data, userId: userId}
+    const response = await addImage(request)
+    if (response?.message === "success"){
+      toast({
+        title: "Image uploaded successfully",
+        duration: 5000,
+        className: "success-toast",
+      });
+      alert("Image uploaded successfully")
+      router.push("/")
+    }
+    console.log("failed")
   };
   return (
     <>
@@ -70,6 +84,7 @@ const UploadForm = ({userId}: {userId: string}) => {
                     {...register("desc")}
                   />
                 </div>
+                <p className="text-main-700">{errors.secureURL?.message}</p>
                 <div className="mt-6 sm:max-w-md">
                   <MediaUploader
                     imageUrl={imageUrl}
