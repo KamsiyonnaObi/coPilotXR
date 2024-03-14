@@ -1,11 +1,9 @@
 import React from "react";
 import Header from "./Header";
+import GalleryCard from "./GalleryCard";
+import { IImage } from "@/src/app/lib/database/models/image.model"
 
-interface CollectionProps {
-  images: string[]; // TODO change to IImage type
-}
-
-const Collection = ({ images }: CollectionProps) => {
+const Collection = ({ images }: {images: IImage[]}) => {
   return (
     <>
       <section>
@@ -14,7 +12,12 @@ const Collection = ({ images }: CollectionProps) => {
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (
-            <div key={image}>{image}</div>
+            <GalleryCard 
+              key={image._id} 
+              title={image.title} 
+              author={image.author.username} 
+              secureURL={image.secureURL}
+            />
           ))}
         </ul>
       ) : (

@@ -7,6 +7,12 @@ import User from "../database/models/user.model";
 import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
 
+const populateUser = (query: any) => query.populate({
+  path: 'author',
+  model: User,
+  select: 'username'
+})
+
 // ADD IMAGE
 export async function addImage({ image, userId }: AddImageParams) {
     try {
@@ -30,3 +36,18 @@ export async function addImage({ image, userId }: AddImageParams) {
       handleError(error)
     }
   }
+
+// GET ALL IMAGES
+export async function getAllImages() {
+  try {
+    await connectToDB();
+
+    // Get all images and populate the author field
+    const images = await populateUser(Image.find()).sort({ createdAt: -1 }).lean();
+
+    return images;
+  } catch (error) {
+    console.error("Error fetching images:", error);
+    throw new Error("Failed to fetch images");
+  }
+}
