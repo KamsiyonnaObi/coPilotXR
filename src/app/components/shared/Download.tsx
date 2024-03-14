@@ -3,8 +3,6 @@ import Image from "next/image";
 import { getCldImageUrl } from 'next-cloudinary';
 
 const Download = ({publicId}: {publicId: string}) => {
-
-
     const downloadURL = getCldImageUrl({
         width: 767,
         height: 767,
@@ -12,7 +10,6 @@ const Download = ({publicId}: {publicId: string}) => {
         flags: ['attachment']
       });;
 
-    
   return (
     <a href={`${downloadURL}`}>
         <Image
