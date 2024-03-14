@@ -14,6 +14,7 @@ export const formSchema = z.object({
   title: z.string().min(3),
   desc: z.string().max(25).optional(),
   secureURL: z.string().url("please upload an image"),
+  publicId: z.string()
 });
 
 export type FormSchema = z.infer<typeof formSchema>;
@@ -28,14 +29,14 @@ const UploadForm = ({userId}: {userId: string}) => {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { title: "", desc: "", secureURL: "" },
+    defaultValues: { title: "", desc: "", secureURL: "", publicId: "" },
     resolver: zodResolver(formSchema),
   });
 
   const imageUrl = watch("secureURL")
-  
 
-  const onSubmit = async (data: {title: string, desc:string, secureURL:string}) => {
+  const onSubmit = async (data: {title: string, desc:string, secureURL:string, publicId:string}) => {
+    
     const request: AddImageParams = {image: data, userId: userId}
     const response = await addImage(request)
     if (response?.message === "success"){

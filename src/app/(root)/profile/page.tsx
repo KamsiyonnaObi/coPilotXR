@@ -1,7 +1,8 @@
 import React from "react";
+import Header from "../../components/shared/Header";
 
 const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+  return  <Header title="Your Profile" />;
 };
 
 export default ProfilePage;
