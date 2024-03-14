@@ -14,3 +14,13 @@ declare type UpdateUserParams = {
   username: string;
   photo: string;
 };
+
+// ====== IMAGE PARAMS
+declare type AddImageParams ={
+  image: {
+    title: string;
+    secureURL: string;
+    desc: string | undefined;
+  }
+  userId: string
+}

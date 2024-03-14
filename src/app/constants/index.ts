@@ -6,8 +6,8 @@ export const navLinks = [
   },
 
   {
-    label: "Object Remove",
-    route: "/transformations/add/remove",
+    label: "Upload Image",
+    route: "/image-upload",
     icon: "/assets/icons/scan.svg",
   },
   {
