@@ -16,10 +16,8 @@ const MediaUploader = ({
   const { toast } = useToast();
 
   const onUploadSuccessHandler = (result: any) => {
-    
+    setParentFormData("publicId", result?.info?.public_id);
     setParentFormData("secureURL", result?.info?.secure_url);
-
-
   };
   const onUploadErrorHandler = () => {
     toast({

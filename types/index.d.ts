@@ -20,6 +20,7 @@ declare type AddImageParams ={
   image: {
     title: string;
     secureURL: string;
+    publicId: string;
     desc: string | undefined;
   }
   userId: string

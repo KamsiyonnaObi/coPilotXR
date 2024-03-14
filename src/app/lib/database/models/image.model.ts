@@ -3,8 +3,9 @@ import { Document, Schema, model, models } from "mongoose";
 export interface IImage extends Document {
   title: string;
   secureURL: string;
+  publicId: string;
+  desc?: string;
   transformationType?: string;
-  publicId?: string;
   width?: number;
   height?: number;
   config?: object;
@@ -22,9 +23,10 @@ export interface IImage extends Document {
 
 const ImageSchema = new Schema({
   title: { type: String, required: true },
-  transformationType: { type: String},
-  publicId: { type: String},
+  publicId: { type: String, required: true},
   secureURL: { type: String, required: true },
+  desc: { type: String},
+  transformationType: { type: String},
   width: { type: Number },
   height: { type: Number },
   config: { type: Object },

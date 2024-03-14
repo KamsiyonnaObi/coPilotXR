@@ -1,5 +1,6 @@
 "use client"
 import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 interface GalleryCardProps {
     title: string,
@@ -7,6 +8,7 @@ interface GalleryCardProps {
     secureURL: string,
 }
 const GalleryCard = ({ title, author, secureURL }: GalleryCardProps) => {
+    console.log(secureURL)
     return (
       <li>
         <div  className="collection-card">
@@ -20,13 +22,24 @@ const GalleryCard = ({ title, author, secureURL }: GalleryCardProps) => {
             sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
           />
           <div className="flex-between">
-            <p className="p-16-semibold mr-3 line-clamp-1 text-dark-700">
-              {title}
-            </p>
-            <p className="p-14-semibold mr-3 line-clamp-1 text-dark-700">
-              {author}
-            </p>
-            
+            <div>
+                <p className="p-16-semibold mr-3 line-clamp-1 text-dark-700">
+                {title}
+                </p>
+                <p className="p-14-semibold mr-3 line-clamp-1 text-dark-700">
+                {author}
+                </p>
+            </div>
+            <div>
+                <a href={``}>
+                    <Image
+                        src="/assets/icons/download.svg"
+                        alt="Add Image"
+                        width={24}
+                        height={24}
+                    />
+                </a>
+            </div>
           </div>
         </div>
       </li>
