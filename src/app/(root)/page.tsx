@@ -1,7 +1,9 @@
 import Collection from "../components/shared/Collection";
+import { getAllImages } from "../lib/actions/images.action";
 
 export default async function Home() {
-  const images = { data: ["1", "2", "3", "4"] }; // TODO change to back end call
+  const data = await getAllImages()
+  
   return (
     <>
       <section className="home">
@@ -9,7 +11,7 @@ export default async function Home() {
       </section>
       {/* Gallery */}
       <section className="sm:mt-12">
-        <Collection images={images?.data} />
+        <Collection JSONimages={JSON.stringify(data)} />
       </section>
     </>
   );
