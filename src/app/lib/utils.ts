@@ -2,6 +2,7 @@
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { plans } from "../constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -24,6 +25,10 @@ export const handleError = (error: unknown) => {
   }
 };
 
+// Function to filter and return the plan with a specific ID
+export function getPlanById(id: number) {
+  return plans.find((plan) => plan.id === id);
+}
 // PLACEHOLDER LOADER - while image is transforming
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

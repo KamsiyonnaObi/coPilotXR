@@ -31,3 +31,25 @@ export const navLinks = [
     icon: "/assets/icons/aws.svg",
   },
 ];
+
+// Data for each plan
+export const plans = [
+  {
+    id: 1,
+    name: "CoPilot Free",
+    price: 9,
+    desc: "Free Forever",
+  },
+  {
+    id: 2,
+    name: "CoPilot Pro",
+    price: 12,
+    desc: "Get 120 Credits per month",
+  },
+  {
+    id: 3,
+    name: "CoPilot Enterprise",
+    price: 15,
+    desc: "Get Unlimited credits",
+  },
+];
