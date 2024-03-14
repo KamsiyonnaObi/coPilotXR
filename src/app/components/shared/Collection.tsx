@@ -1,9 +1,11 @@
 import React from "react";
 import Header from "./Header";
 import GalleryCard from "./GalleryCard";
-import { IImage } from "@/src/app/lib/database/models/image.model"
+import { IImage } from "../../lib/database/models/image.model";
 
-const Collection = ({ images }: {images: IImage[]}) => {
+
+const Collection = ({ JSONimages }: {JSONimages: string}) => {
+  const images = JSON.parse(JSONimages)
   return (
     <>
       <section>
@@ -11,7 +13,7 @@ const Collection = ({ images }: {images: IImage[]}) => {
       </section>
       {images.length > 0 ? (
         <ul className="collection-list">
-          {images.map((image) => (
+          {images.map((image: IImage) => (
             <GalleryCard 
               key={image._id} 
               title={image.title} 

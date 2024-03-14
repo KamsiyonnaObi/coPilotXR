@@ -11,7 +11,7 @@ export default async function Home() {
       </section>
       {/* Gallery */}
       <section className="sm:mt-12">
-        <Collection images={data} />
+        <Collection JSONimages={JSON.stringify(data)} />
       </section>
     </>
   );
