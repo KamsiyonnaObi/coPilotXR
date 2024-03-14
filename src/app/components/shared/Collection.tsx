@@ -6,6 +6,7 @@ import { IImage } from "../../lib/database/models/image.model";
 
 const Collection = ({ JSONimages }: {JSONimages: string}) => {
   const images = JSON.parse(JSONimages)
+
   return (
     <>
       <section>
@@ -19,6 +20,7 @@ const Collection = ({ JSONimages }: {JSONimages: string}) => {
               title={image.title} 
               author={image.author.username} 
               secureURL={image.secureURL}
+              publicId={image.publicId}
             />
           ))}
         </ul>

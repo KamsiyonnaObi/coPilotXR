@@ -1,14 +1,16 @@
 "use client"
 import { CldImage } from "next-cloudinary";
-import Image from "next/image";
+import Download from "./Download";
+
 
 interface GalleryCardProps {
     title: string,
     author: string,
     secureURL: string,
+    publicId: string
 }
-const GalleryCard = ({ title, author, secureURL }: GalleryCardProps) => {
-    console.log(secureURL)
+const GalleryCard = ({ title, author, secureURL, publicId }: GalleryCardProps) => {
+    console.log(publicId)
     return (
       <li>
         <div  className="collection-card">
@@ -30,15 +32,8 @@ const GalleryCard = ({ title, author, secureURL }: GalleryCardProps) => {
                 {author}
                 </p>
             </div>
-            <div>
-                <a href={``}>
-                    <Image
-                        src="/assets/icons/download.svg"
-                        alt="Add Image"
-                        width={24}
-                        height={24}
-                    />
-                </a>
+            <div className="hover:shadow-lg">
+                <Download publicId={publicId}/>
             </div>
           </div>
         </div>
