@@ -5,7 +5,7 @@
 
 ## 📋 <a name="table">Table of Contents</a>
 
-1. 🤖 [Introduction](#introduction)
+1. 👋🏽 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🛠️ [Features in development](#development)
@@ -14,7 +14,7 @@
 7. 🚀 [More](#more)
 
 
-## <a name="introduction">🤖 Introduction</a>
+## <a name="introduction">👋🏽 Introduction</a>
 
 Introducing CoPilot – your go-to platform for effortless image sharing and management! With a simple interface, you can create an account, securely log in, upload your images, and browse through a gallery of images shared by other users. 
 
