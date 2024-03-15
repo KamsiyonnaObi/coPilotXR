@@ -3,10 +3,6 @@
 
 <h3 align="center">A CoPilot Image uploader Demo</h3>
 
-<div align="center">
-     Demo of an Image uploader web app
-    </div>
-
 ## 📋 <a name="table">Table of Contents</a>
 
 1. 🤖 [Introduction](#introduction)
@@ -20,7 +16,9 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Introducing CoPilot – your go-to platform for effortless image sharing and management! With a simple interface, you can create an account, securely log in, upload your images, and browse through a gallery of images shared by other users. Sign up and start sharing!
+Introducing CoPilot – your go-to platform for effortless image sharing and management! With a simple interface, you can create an account, securely log in, upload your images, and browse through a gallery of images shared by other users. 
+
+Sign up and start sharing!
 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
@@ -36,15 +34,22 @@ Introducing CoPilot – your go-to platform for effortless image sharing and man
 ## <a name="features">🔋 Features</a>
 
 👉 **Authentication and Authorization**: Secure user access with registration, login, and route protection.
+
 👉 **Image Gallery**: Explore user images
+
 👉 **Profile Page**: View and edit your profile
+
 
 ## <a name="development">🛠️ Features in Development</a>
 
 👉 **Image Recoloring**: Customize images by replacing objects with desired colors easily
+
 👉 **Background Removal**: Extract objects from backgrounds with ease
+
 👉 **Subscriptions**: Upgrade plan to enjoy better features!
+
 👉 **Credits Purchase**: Securely buy credits via Stripe for uninterrupted use
+
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -117,6 +122,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## <a name="links">🔗 References </a>
 
 Style Guide was inspired by JavaScript Mastery
+
 Design was also inspired by Canva
 
 ## <a name="more">🚀 More</a>
