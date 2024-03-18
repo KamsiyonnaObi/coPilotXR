@@ -89,7 +89,9 @@ const MobileNav = () => {
                             className={`${isActive && "brightness-200"}`}
                           />
                           <p
-                            className={`my-auto ${isActive && "text-main-700"}`}
+                            className={`my-auto ${
+                              isActive && "text-main-700"
+                            } hover:text-red-400`}
                           >
                             {link.label}
                           </p>
