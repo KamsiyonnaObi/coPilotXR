@@ -15,12 +15,13 @@ const Account = ({ photo, username, email }: ProfileAccountProps) => {
       <section className="flex flex-col gap-4">
         <div className="space-y-2 pt-2">
           <p className="p-14-bold">Profile Photo</p>
-          <div className="relative h-[80px] w-[80px] rounded-full">
+          <div className="h-[80px] w-[80px] rounded-full">
             <Image
               className="rounded-full"
               src={photo}
               alt="profile photo"
-              fill
+              width={80}
+              height={80}
             />
           </div>
         </div>

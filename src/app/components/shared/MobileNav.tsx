@@ -8,14 +8,12 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/src/app/constants";
 import Notification from "./Notification";
 import { Button } from "shadcn/components/ui/button";
+import { useSidebar } from "../../providers/SidebarContext";
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, toggleSidebar, closeSidebar } = useSidebar();
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
   return (
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
@@ -45,10 +43,12 @@ const MobileNav = () => {
             }`}
           >
             <button
-              onClick={toggleSidebar}
+              onClick={closeSidebar}
               className="absolute top-5 right-5 px-3 py-1 text-white"
             >
-              x
+              <div className="relative w-5 h-5">
+                <Image src="/assets/icons/close.svg" alt="close" fill />
+              </div>
             </button>
             <div className="p-4 mt-2">
               {/* Sidebar content goes here */}
@@ -70,7 +70,11 @@ const MobileNav = () => {
                         key={link.route}
                         className="flex p-18 whitespace-nowrap text-white"
                       >
-                        <Link className="sidebar-link" href={link.route}>
+                        <Link
+                          className="sidebar-link"
+                          href={link.route}
+                          onClick={closeSidebar}
+                        >
                           <Image
                             src={link.icon}
                             alt="nav-logo"
@@ -79,7 +83,9 @@ const MobileNav = () => {
                             className={`${isActive && "brightness-200"}`}
                           />
                           <p
-                            className={`my-auto ${isActive && "text-main-700"}`}
+                            className={`my-auto ${
+                              isActive && "text-main-700"
+                            } hover:text-red-400`}
                           >
                             {link.label}
                           </p>
@@ -93,7 +99,12 @@ const MobileNav = () => {
             </div>
           </div>
           {/* Overlay for blur effect */}
-          {isOpen && <div className="fixed inset-0 backdrop-blur"></div>}
+          {isOpen && (
+            <div
+              onClick={closeSidebar}
+              className="fixed inset-0 backdrop-blur"
+            ></div>
+          )}
         </SignedIn>
         <SignedOut>
           <Button
