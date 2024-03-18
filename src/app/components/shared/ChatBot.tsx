@@ -5,12 +5,18 @@ import Image from "next/image";
 
 import { Button } from "@/shadcn/components/ui/button";
 import { Input } from "@/shadcn/components/ui/input";
+import { useSidebar } from "../../providers/SidebarContext";
 
 const ChatBot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenChat, setIsOpenChat] = useState(false);
+  const { isOpen } = useSidebar();
   return (
-    <section className="fixed bottom-4 right-0 z-50 space-y-4 lg:right-6 lg:bottom-6">
-      {isOpen && (
+    <section
+      className={`fixed bottom-4 right-0 z-50 space-y-4 lg:right-6 lg:bottom-6 ${
+        isOpen ? "hidden lg:block" : ""
+      }`}
+    >
+      {isOpenChat && (
         <section className="chat-card space-y-3">
           <div className="border p-3 space-y-1">
             <p>👋🏽 Hi!</p>
@@ -35,13 +41,15 @@ const ChatBot = () => {
         <Button
           className="flex-center w-11 h-11 p-0"
           onClick={() => {
-            setIsOpen((prev) => !prev);
+            setIsOpenChat((prev) => !prev);
           }}
         >
           <div className="relative w-5 h-5">
             <Image
               src={`${
-                isOpen ? "/assets/icons/close.svg" : "/assets/icons/search.svg"
+                isOpenChat
+                  ? "/assets/icons/close.svg"
+                  : "/assets/icons/search.svg"
               }`}
               alt="chat"
               fill

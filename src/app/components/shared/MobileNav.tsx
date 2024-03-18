@@ -8,18 +8,12 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/src/app/constants";
 import Notification from "./Notification";
 import { Button } from "shadcn/components/ui/button";
+import { useSidebar } from "../../providers/SidebarContext";
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, toggleSidebar, closeSidebar } = useSidebar();
 
-  const toggleSidebar = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const closeSidebar = () => {
-    setIsOpen(false);
-  };
   return (
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
