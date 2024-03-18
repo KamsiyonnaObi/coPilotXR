@@ -48,7 +48,9 @@ const MobileNav = () => {
               onClick={toggleSidebar}
               className="absolute top-5 right-5 px-3 py-1 text-white"
             >
-              x
+              <div className="relative w-5 h-5">
+                <Image src="/assets/icons/close.svg" alt="close" fill />
+              </div>
             </button>
             <div className="p-4 mt-2">
               {/* Sidebar content goes here */}
@@ -93,7 +95,12 @@ const MobileNav = () => {
             </div>
           </div>
           {/* Overlay for blur effect */}
-          {isOpen && <div className="fixed inset-0 backdrop-blur"></div>}
+          {isOpen && (
+            <div
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 backdrop-blur"
+            ></div>
+          )}
         </SignedIn>
         <SignedOut>
           <Button

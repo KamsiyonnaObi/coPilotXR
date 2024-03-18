@@ -145,7 +145,7 @@
   }
 
   .header-sidebar {
-    @apply fixed top-0 z-50 right-0 h-full w-3/5 bg-dark-700 transition-transform duration-300 transform;
+    @apply fixed top-0 z-[100] right-0 h-full w-4/5 md:w-3/5 bg-dark-700 transition-transform duration-300 transform;
   }
 
   .header-nav_elements {
