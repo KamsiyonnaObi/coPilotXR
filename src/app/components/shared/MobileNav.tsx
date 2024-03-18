@@ -14,7 +14,11 @@ const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
+  };
+
+  const closeSidebar = () => {
+    setIsOpen(false);
   };
   return (
     <header className="header">
@@ -45,7 +49,7 @@ const MobileNav = () => {
             }`}
           >
             <button
-              onClick={toggleSidebar}
+              onClick={closeSidebar}
               className="absolute top-5 right-5 px-3 py-1 text-white"
             >
               <div className="relative w-5 h-5">
@@ -72,7 +76,11 @@ const MobileNav = () => {
                         key={link.route}
                         className="flex p-18 whitespace-nowrap text-white"
                       >
-                        <Link className="sidebar-link" href={link.route}>
+                        <Link
+                          className="sidebar-link"
+                          href={link.route}
+                          onClick={closeSidebar}
+                        >
                           <Image
                             src={link.icon}
                             alt="nav-logo"
@@ -97,7 +105,7 @@ const MobileNav = () => {
           {/* Overlay for blur effect */}
           {isOpen && (
             <div
-              onClick={() => setIsOpen(false)}
+              onClick={closeSidebar}
               className="fixed inset-0 backdrop-blur"
             ></div>
           )}
