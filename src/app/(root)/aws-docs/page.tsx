@@ -42,7 +42,7 @@ const TechnicalQuestion = () => {
         </p>
       </article>
       <article className="font-Adelle space-y-4">
-        <h3 className="p-16-semibold my-4">Setting Up with AWS Amplify</h3>
+        <h3 className="p-16-bold my-4">Setting Up with AWS Amplify</h3>
         <div>
           <p className="p-14-regular mt-2">
             <span className="p-14-bold">AWS Amplify:</span> A Comprehensive
