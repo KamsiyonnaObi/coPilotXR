@@ -54,7 +54,7 @@ const Sidebar = () => {
             <ul className="sidebar-nav_elements">
               {navLinks.slice(4).map((link) => {
                 const isActive = link.route === pathname;
-                const readAWS = link.route === "/aws-docs";
+
                 return (
                   <li
                     key={link.route}
@@ -71,11 +71,28 @@ const Sidebar = () => {
                         className={`${isActive && "brightness-200"}`}
                       />
                       <p className="my-auto">{link.label}</p>
-                      {readAWS && <Notification />}
                     </Link>
                   </li>
                 );
               })}
+              <li className="flex p-18 whitespace-nowrap text-white">
+                <a
+                  target="_blank"
+                  className="sidebar-link"
+                  href="/pdf/CoPilot-TQ.pdf"
+                >
+                  <Image
+                    src="/assets/icons/aws.svg"
+                    alt="nav-logo"
+                    width={24}
+                    height={24}
+                  />
+                  <p className={`my-auto  hover:text-red-400`}>
+                    AWS Implementation
+                  </p>
+                  <Notification />
+                </a>
+              </li>
               <li className="flex-center cursor-pointer gap-2 p-4">
                 <UserButton
                   appearance={{

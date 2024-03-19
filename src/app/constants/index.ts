@@ -25,11 +25,6 @@ export const navLinks = [
     route: "/profile",
     icon: "/assets/icons/profile.svg",
   },
-  {
-    label: "AWS Implementation",
-    route: "/aws-docs",
-    icon: "/assets/icons/aws.svg",
-  },
 ];
 
 // Data for each plan

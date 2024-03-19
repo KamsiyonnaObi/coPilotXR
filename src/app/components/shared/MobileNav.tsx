@@ -64,7 +64,6 @@ const MobileNav = () => {
                   {navLinks.map((link) => {
                     const isActive = link.route === pathname;
 
-                    const readAWS = link.route === "/aws-docs";
                     return (
                       <li
                         key={link.route}
@@ -89,11 +88,28 @@ const MobileNav = () => {
                           >
                             {link.label}
                           </p>
-                          {readAWS && <Notification />}
                         </Link>
                       </li>
                     );
                   })}
+                  <li className="flex p-18 whitespace-nowrap text-white">
+                    <a
+                      target="_blank"
+                      className="sidebar-link"
+                      href="/pdf/CoPilot-TQ.pdf"
+                    >
+                      <Image
+                        src="/assets/icons/aws.svg"
+                        alt="nav-logo"
+                        width={24}
+                        height={24}
+                      />
+                      <p className={`my-auto  hover:text-red-400`}>
+                        AWS Implementation
+                      </p>
+                      <Notification />
+                    </a>
+                  </li>
                 </ul>
               </>
             </div>
