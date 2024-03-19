@@ -64,7 +64,6 @@ const MobileNav = () => {
                   {navLinks.map((link) => {
                     const isActive = link.route === pathname;
 
-                    const readAWS = link.route === "/aws-docs";
                     return (
                       <li
                         key={link.route}
@@ -89,7 +88,6 @@ const MobileNav = () => {
                           >
                             {link.label}
                           </p>
-                          {readAWS && <Notification />}
                         </Link>
                       </li>
                     );

@@ -117,6 +117,9 @@
     @apply font-bold text-[18px] leading-[140%];
   }
 
+  .p-16-bold {
+    @apply font-bold text-[16px] leading-[140%];
+  }
   .p-16-semibold {
     @apply font-semibold text-[16px] leading-[140%];
   }

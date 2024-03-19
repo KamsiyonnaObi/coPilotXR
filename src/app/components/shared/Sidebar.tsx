@@ -54,7 +54,7 @@ const Sidebar = () => {
             <ul className="sidebar-nav_elements">
               {navLinks.slice(4).map((link) => {
                 const isActive = link.route === pathname;
-                const readAWS = link.route === "/aws-docs";
+
                 return (
                   <li
                     key={link.route}
@@ -71,11 +71,11 @@ const Sidebar = () => {
                         className={`${isActive && "brightness-200"}`}
                       />
                       <p className="my-auto">{link.label}</p>
-                      {readAWS && <Notification />}
                     </Link>
                   </li>
                 );
               })}
+
               <li className="flex-center cursor-pointer gap-2 p-4">
                 <UserButton
                   appearance={{
