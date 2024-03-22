@@ -1,11 +1,27 @@
-import Header from "@/src/app/components/shared/Header";
 import React from "react";
 
-const AddTransformationTypePage = () => {
+import { auth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
+import { getUserById } from "@/src/app/lib/actions/user.action";
+import UploadForm from "@/src/app/components/shared/UploadForm";
+
+type FormProps = {
+  params: { type: string };
+};
+
+const AddTransformationTypePage = async ({ params }: FormProps) => {
+  const { userId } = auth();
+  const { type } = params;
+
+  if (!userId) {
+    redirect("/sign-in");
+  }
+
+  const user = await getUserById(userId);
   return (
-    <h1 className="">
-      <Header title="Coming Soon" subtitle="Features currently being built" />
-    </h1>
+    <section>
+      <UploadForm userId={user._id} transformationType={type} />
+    </section>
   );
 };
 

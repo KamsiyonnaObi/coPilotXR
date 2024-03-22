@@ -2,7 +2,7 @@
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { plans } from "../constants";
+import { aspectRatioOptions, plans } from "../constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -29,6 +29,8 @@ export const handleError = (error: unknown) => {
 export function getPlanById(id: number) {
   return plans.find((plan) => plan.id === id);
 }
+
+export type AspectRatioKey = keyof typeof aspectRatioOptions;
 // PLACEHOLDER LOADER - while image is transforming
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
