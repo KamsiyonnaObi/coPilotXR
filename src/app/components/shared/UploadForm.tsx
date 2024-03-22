@@ -2,53 +2,83 @@
 
 import React from "react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import MediaUploader from "./MediaUploader";
-import { addImage } from "../../lib/actions/images.action";
 import { useRouter } from "next/navigation";
+import { CldImage, getCldImageUrl } from "next-cloudinary";
+
+import { addImage } from "../../lib/actions/images.action";
 import { useToast } from "@/shadcn/components/ui/use-toast";
+import MediaUploader from "./MediaUploader";
+import TransormedImage from "./TransormedImage";
+import { aspectRatioOptions } from "../../constants";
+import { AspectRatioKey } from "../../lib/utils";
 
 export const formSchema = z.object({
   title: z.string().min(3),
   desc: z.string().max(25).optional(),
   secureURL: z.string().url("please upload an image"),
-  publicId: z.string()
+  transformedURL: z.union([z.literal(""), z.string().trim().url()]),
+  publicId: z.string(),
+  aspectRatio: z.string().optional(),
 });
 
 export type FormSchema = z.infer<typeof formSchema>;
 
-const UploadForm = ({userId}: {userId: string}) => {
-  const router = useRouter()
-  const {toast } = useToast()
+const UploadForm = ({
+  userId,
+  transformationType,
+}: {
+  userId: string;
+  transformationType?: string;
+}) => {
+  const router = useRouter();
+  const { toast } = useToast();
   const {
     register,
     watch,
+    control,
+    reset,
     handleSubmit,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm({
-    defaultValues: { title: "", desc: "", secureURL: "", publicId: "" },
+    defaultValues: {
+      title: "",
+      desc: "",
+      secureURL: "",
+      transformedURL: "",
+      publicId: "",
+      aspectRatio: "",
+    },
     resolver: zodResolver(formSchema),
   });
 
-  const imageUrl = watch("secureURL")
+  const imageUrl = watch("secureURL");
+  const publicId = watch("publicId");
 
-  const onSubmit = async (data: {title: string, desc:string, secureURL:string, publicId:string}) => {
-    
-    const request: AddImageParams = {image: data, userId: userId}
-    const response = await addImage(request)
-    if (response?.message === "success"){
+  console.log(errors);
+  const onSubmit = async (data: {
+    title: string;
+    desc: string;
+    secureURL: string;
+    publicId: string;
+  }) => {
+    const request: AddImageParams = { image: data, userId: userId };
+    const response = await addImage(request);
+
+    if (response?.message === "success") {
       toast({
         title: "Image uploaded successfully",
         duration: 5000,
         className: "success-toast",
       });
-      alert("Image uploaded successfully")
-      router.push("/")
+      alert("Image uploaded successfully");
+      router.push("/");
+    } else {
+      console.log("failed");
     }
-    console.log("failed")
   };
   return (
     <>
@@ -85,16 +115,69 @@ const UploadForm = ({userId}: {userId: string}) => {
                     {...register("desc")}
                   />
                 </div>
-                <p className="text-main-700">{errors.secureURL?.message}</p>
-                <div className="mt-6 sm:max-w-md">
-                  <MediaUploader
-                    imageUrl={imageUrl}
-                    setParentFormData={setValue as any}
-                  />
-                </div>
+
+                {/* Aspect ratio dropdown */}
+                {transformationType === "fill" && (
+                  <div className="mt-6 sm:max-w-md">
+                    <label
+                      htmlFor="aspectRatio"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Aspect Ratio
+                    </label>
+                    <Controller
+                      name="aspectRatio"
+                      control={control}
+                      render={({ field }) => (
+                        <select
+                          {...field}
+                          className="input-field"
+                          onChange={(e) => field.onChange(e.target.value)}
+                        >
+                          <option value="">Select Aspect Ratio</option>
+                          {Object.keys(aspectRatioOptions).map((key) => (
+                            <option key={key} value={key}>
+                              {aspectRatioOptions[key as AspectRatioKey].label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    />
+                    <p className="text-main-700">
+                      {errors.aspectRatio?.message}
+                    </p>
+                  </div>
+                )}
+
+                <section className="">
+                  <p className="text-main-700">{errors.secureURL?.message}</p>
+                  <div className="mt-6 sm:max-w-md">
+                    <MediaUploader
+                      imageUrl={imageUrl}
+                      setParentFormData={setValue as any}
+                    />
+                  </div>
+                  {transformationType && (
+                    <div className="mt-6 sm:max-w-md">
+                      <TransormedImage
+                        type={transformationType}
+                        publicId={publicId}
+                        setParentFormData={setValue as any}
+                      />
+                    </div>
+                  )}
+                </section>
                 <div className="mt-6 flex items-center gap-x-6">
                   <button
+                    onClick={() => reset()}
+                    className="rounded-md px-3 py-2 text-sm font-semibold  hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    cancel
+                  </button>
+
+                  <button
                     type="submit"
+                    onClick={() => onSubmit}
                     className="rounded-md bg-main-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Save

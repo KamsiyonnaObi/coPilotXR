@@ -16,12 +16,28 @@ declare type UpdateUserParams = {
 };
 
 // ====== IMAGE PARAMS
-declare type AddImageParams ={
+declare type AddImageParams = {
   image: {
     title: string;
     secureURL: string;
     publicId: string;
     desc: string | undefined;
-  }
-  userId: string
-}
+  };
+  userId: string;
+};
+
+// declare type TransformedImageProps = {
+//   image: any;
+//   type: string;
+//   publicId: string;
+//   title: string;
+//   transformationConfig: Transformations | null;
+//   isTransforming: boolean;
+//   hasDownload?: boolean;
+//   setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
+// };
+
+declare type Transformations = {
+  fillBackground?: boolean;
+  removeBackground?: boolean;
+};
