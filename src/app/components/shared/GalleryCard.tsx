@@ -1,5 +1,6 @@
 "use client";
 import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 import Download from "./Download";
 
 interface GalleryCardProps {
@@ -17,14 +18,14 @@ const GalleryCard = ({
   return (
     <li>
       <div className="collection-card">
-        <CldImage
+        <Image
           src={secureURL}
           alt={title}
           width={500}
           height={500}
-          crop="fill"
+          // crop="fill"
           loading="lazy"
-          className="h-52 w-full rounded-[10px] object-cover"
+          className="h-52 w-full rounded-[10px] object-contain"
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
         />
         <div className="flex-between">
